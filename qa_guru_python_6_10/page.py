@@ -4,6 +4,15 @@ from selene import have
 
 
 class RegistrationPage:
+    def open(self):
+        browser.open('/automation-practice-form')
+
+
+    def register(self, user):
+
+    def should_have_registered(self, user):
+
+
 
     def open(self):
         browser.open('/automation-practice-form')

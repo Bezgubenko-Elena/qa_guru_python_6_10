@@ -1,16 +1,29 @@
+import datetime
 import os
 from selene import browser
 from selene import have
+
+from data.users import Gender, State, User, City
 from qa_guru_python_6_10.page import RegistrationPage
+
+user1 = User(
+        first_name='Helen',
+        last_name='Bezgubenko',
+        email='eb@gmail.com',
+        gender=Gender.FEMALE,
+        mobile_number=9011111111,
+        date_of_birth=datetime.date(1993, 11, 1),
+        subjects=('Maths', 'Arts', 'Commerce', 'Economics'),
+        hobbies=('Music', 'Sports', 'Reading'),
+        picture='resources\h.jpg',
+        current_address='Istr Street, 17, 21',
+        state=State.NCR,
+        city=City.GURGAON
+    )
 
 def test_success_registration(browser_open):
     registration_page = RegistrationPage()
     # fill form
-    registration_page.open()
-    registration_page.fill_first_name('Helen')
-    registration_page.fill_last_name('Bezgubenko')
-    registration_page.fill_email('eb@gmail.com')
-    registration_page.fill_gender('Female')
     registration_page.fill_mobile_number(9011111111)
     registration_page.fill_date_of_birth('1993', '11', '01')
     registration_page.fill_subjects('Maths', 'Arts', 'Commerce', 'Economics')

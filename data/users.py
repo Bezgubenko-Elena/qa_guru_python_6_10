@@ -1,32 +1,36 @@
 from dataclasses import dataclass
 import enum
+import datetime
 
 
 class Gender(enum.Enum):
-    Male = 'Male'
-    Female = 'Female'
-    Other = 'Other'
+    MALE = 'Male'
+    FEMALE = 'Female'
+    OTHER = 'Other'
+
 
 class State(enum.Enum):
     NCR = 'NCR'
-    UT = 'Uttar Pradesh'
-    Haryana = 'Haryana'
-    Rajasthan = 'Rajasthan'
+    UP = 'Uttar Pradesh'
+    HARYANA = 'Haryana'
+    RAJASTHAN = 'Rajasthan'
+
 
 class City(enum.Enum):
-    Delhi
-    Gurgaon
-    Noida
-
-    Agra
-    Lucknow
-    Merrut
-
-    Karnal
-    Panipat
-
-    Jaipur
-    Jaiselmer
+    if State.NCR:
+        DELHI = 'Delhi'
+        GURGAON = 'Gurgaon'
+        NOIDA = 'Noida'
+    elif State.UP:
+        AGRA = 'Agra'
+        LUCKNOW = 'Lucknow'
+        MERRUR = 'Merrut'
+    elif State.HARYANA:
+        KARNAL = 'Karnal'
+        PANIPAT = 'Panipat'
+    elif State.RAJASTHAN:
+        JAIPUR = 'Jaipur'
+        JAISELMER = 'Jaiselmer'
 
 
 @dataclass
@@ -34,15 +38,15 @@ class User:
     first_name: str
     last_name: str
     email: str
-    gender: str
+    gender: Gender
     mobile_number: int
-    date_of_birth: datetime    #????
+    date_of_birth: datetime.date
     subjects: tuple
     hobbies: tuple
-    picture: str #????
+    picture: str
     current_address: str
-    state: str
-    city: str
+    state: State
+    city: City
 
 
 
