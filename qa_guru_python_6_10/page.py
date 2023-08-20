@@ -1,4 +1,5 @@
 import os
+from tests.conftest import path_picture
 from selene import browser
 from selene import have
 
@@ -62,7 +63,7 @@ class RegistrationPage:
                 continue
 
     def upload_picture(self, url):
-        browser.element('[id="uploadPicture"]').send_keys(os.path.abspath(url))
+        browser.element('[id="uploadPicture"]').send_keys(os.path.join(path_picture, url))
 
     def fill_current_address(self, text):
         browser.element('[id="currentAddress"]').type(text)
@@ -75,7 +76,6 @@ class RegistrationPage:
 
     def submit(self):
         browser.element('[id="submit"]').click()
-
 
     def should_values(self, *args):
         for i in range(len(args)):

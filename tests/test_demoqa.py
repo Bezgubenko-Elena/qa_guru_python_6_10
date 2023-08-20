@@ -1,7 +1,5 @@
-import os
-from selene import browser
-from selene import have
 from qa_guru_python_6_10.page import RegistrationPage
+
 
 def test_success_registration(browser_open):
     registration_page = RegistrationPage()
@@ -15,7 +13,7 @@ def test_success_registration(browser_open):
     registration_page.fill_date_of_birth('1993', '11', '01')
     registration_page.fill_subjects('Maths', 'Arts', 'Commerce', 'Economics')
     registration_page.fill_hobbies('Music', 'Sports', 'Reading')
-    registration_page.upload_picture('resources\h.jpg')
+    registration_page.upload_picture('h.jpg')
     registration_page.fill_current_address('Spark Street, 17')
     registration_page.fill_state_and_city('NCR', 'Delhi')
     registration_page.submit()
