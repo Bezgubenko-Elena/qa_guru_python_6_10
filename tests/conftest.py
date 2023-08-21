@@ -7,6 +7,7 @@ import os
 
 path_picture = os.path.abspath(os.path.join(os.path.dirname(__file__), '../resources'))
 
+
 @pytest.fixture()
 def browser_management():
     driver = webdriver.Chrome(service=Service(ChromeDriverManager(version="114.0.5735.90").install()))
