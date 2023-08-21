@@ -15,8 +15,8 @@ class RegistrationPage:
         self._fill_gender(user.gender)
         self.fill_mobile_number(user.mobile_number)
         self._fill_date_of_birth(user, user.date_of_birth)
-        self._fill_subjects(user.subjects)
-        self._fill_hobbies(user.hobbies)
+        self._fill_subjects(*user.subjects)
+        self._fill_hobbies(*user.hobbies)
         self._upload_picture(user.picture)
         self._fill_current_address(user.current_address)
         self._fill_state_and_city(user.state, user.city)
@@ -61,13 +61,24 @@ class RegistrationPage:
         browser.element(f'[class="react-datepicker__day react-datepicker__day--0{user.date_of_birth:%d}"]').click()
 
     def _fill_subjects(self, *args):
-        browser.element('[id="subjectsInput"]')
         for arg in args:
-            if arg in ('Maths', 'Arts', 'Commerce', 'Economics'):
-                type(arg).press_enter()
+            if arg in ('Maths',
+                       'Accounting',
+                       'Arts',
+                       'Social Studies',
+                       'Biology',
+                       'Physics',
+                       'Computer Science',
+                       'Chemistry',
+                       'Commerce',
+                       'Economics',
+                       'Civics',
+                       'English',
+                       'Hindi',
+                       'History'):
+                browser.element('[id="subjectsInput"]').type(arg).press_enter()
             else:
                 continue
-
 
     def _fill_hobbies(self, *args):
         for arg in args:
